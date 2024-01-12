@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%- title %></title>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <style>
+    body {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <%- include('header'); %>
+  <br />
+  <br />
+  <div id="main-result" class="container">
+    <%- include('marketing'); %>
+  </div>
+
+  <br />
+  <br />
+  <br />
+
+  <%- include('button'); %>
+  
+  <%- include('footer'); %>
+
+  <!-- Include htmx -->
+  <script src="https://unpkg.com/htmx.org@1.7.0/dist/htmx.js"></script>
+</body>
+</html>

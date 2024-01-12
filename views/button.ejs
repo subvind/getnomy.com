@@ -1,0 +1,50 @@
+<div id="slide-out" class="sidenav">
+  <iframe class="im-iframe" src="/instant-messenger" frameborder="0"></iframe>
+</div>
+
+<a id="chat-button" href="#" data-target="slide-out" class="btn btn-floating btn-large waves-effect waves-light sidenav-trigger red"><i class="material-icons">chat</i></a>
+
+<style>
+  .im-iframe {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  #chat-button {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+  }
+
+  #slide-out {
+    width: 400px;
+    max-width: 100%; /* Ensure the div doesn't exceed the browser width */
+  }
+  @media (min-width: 600px) {
+    /* If the screen width is 600 pixels or more, use 80% of the browser width */
+    #slide-out {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 599px) {
+    /* If the screen width is less than 600 pixels, use a fixed width of 300 pixels */
+    #slide-out {
+      width: 350px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {
+      edge: 'right'
+    });
+  });
+</script>
