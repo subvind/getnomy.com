@@ -4,7 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { v4 as uuidv4 } from 'uuid';
 
-// import { Channel } from '../channel/channel.entity';
+import { Community } from '../community/community.entity';
 // import { Peer } from '../peer/peer.entity';
 // import { Message } from '../message/message.entity';
 
@@ -26,9 +26,9 @@ export class Tenant {
    * Other properties and relationships as needed
    */
 
-  // // channels
-  // @OneToMany(() => Channel, channel => channel.tenant, { nullable: true })
-  // channels: Channel[]
+  // community id
+  @ManyToOne(() => Community, community => community.id)
+  community: Community;
 
   // // peers
   // @OneToMany(() => Peer, peer => peer.tenant, { nullable: true })

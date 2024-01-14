@@ -24,7 +24,7 @@ export class TenantService {
       );
     }
   
-    // query.leftJoinAndSelect('tenant.messages', 'messages');
+    query.leftJoinAndSelect('tenant.community', 'community');
     
     const offset = (page - 1) * limit;
   
@@ -39,7 +39,7 @@ export class TenantService {
         id: id
       },
       relations: [
-        // 'messages',
+        'community',
       ]
     });
   }
@@ -50,7 +50,7 @@ export class TenantService {
         slug: slug
       },
       relations: [
-        // 'messages',
+        'community',
       ]
     });
   }

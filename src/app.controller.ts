@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Req, Res, Post } from '@nestjs/common';
+import { Controller, Get, Render, Req, Res, Post, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 import { HttpService } from '@nestjs/axios';
@@ -22,6 +22,50 @@ export class AppController {
     };
 
     const payload = await firstValueFrom(
+      this.httpService.get(`http://localhost:${port}/api/communities`, { params }).pipe(
+        catchError((error: any) => {
+          console.log('error', error)
+          return Promise.reject(error.response.data);
+        })
+      )
+    );
+
+    return {
+      title: 'Instant Messenger Software - nomy.IMS',
+      communityTable: payload.data
+    };
+  }
+
+  @Get(':communitySlug')
+  @Render('indexCommunity') // 'index' corresponds to the name of your view file without extension
+  async getCommunity(
+    @Param('communitySlug') communitySlug: string
+  ) {
+    let communityPayload
+    try {
+      communityPayload = await firstValueFrom(
+        this.httpService.get(`http://localhost:${port}/api/communities/slug/${communitySlug}`).pipe(
+          catchError((error: any) => {
+            console.log('error', error)
+            return Promise.reject(error.response.data);
+          })
+        )
+      );
+    } catch (e) {
+      return {
+        title: 'Instant Messenger Software - nomy.IMS',
+        tenantTable: null,
+        community: null
+      }
+    }
+
+    const params = {
+      page: 1,
+      limit: 10,
+      search: '',
+    };
+
+    const tenantsPayload = await firstValueFrom(
       this.httpService.get(`http://localhost:${port}/api/tenants`, { params }).pipe(
         catchError((error: any) => {
           console.log('error', error)
@@ -32,7 +76,8 @@ export class AppController {
 
     return {
       title: 'Instant Messenger Software - nomy.IMS',
-      tenantTable: payload.data
+      tenantTable: tenantsPayload.data,
+      community: communityPayload
     };
   }
 

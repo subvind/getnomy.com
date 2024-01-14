@@ -2,7 +2,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Module, forwardRef } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
-import { TenantsController } from './tenants.controller';
+import { CommunitiesController } from './communities.controller';
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import { TenantsController } from './tenants.controller';
   exports: [
     
   ],
-  controllers: [TenantsController],
+  controllers: [CommunitiesController],
   providers: [],
 })
-export class TenantsModule {}
+export class CommunitiesModule {}

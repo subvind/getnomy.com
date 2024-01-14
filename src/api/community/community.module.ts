@@ -1,10 +1,10 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Module, forwardRef } from '@nestjs/common';
-import { TenantController } from './tenant.controller';
-import { TenantService } from './tenant.service';
+import { CommunityController } from './community.controller';
+import { CommunityService } from './community.service';
 
-import { Tenant } from './tenant.entity';
+import { Community } from './community.entity';
 // import { OrganizationModule } from '../organizations/organization.module';
 // import { AnalyticModule } from 'src/analytics/analytic.module';
 
@@ -12,12 +12,12 @@ import { Tenant } from './tenant.entity';
   imports: [
     // forwardRef(() => AnalyticModule),
     // OrganizationModule,
-    TypeOrmModule.forFeature([Tenant]),
+    TypeOrmModule.forFeature([Community]),
   ],
   exports: [
-    TenantService
+    CommunityService
   ],
-  controllers: [TenantController],
-  providers: [TenantService],
+  controllers: [CommunityController],
+  providers: [CommunityService],
 })
-export class TenantModule {}
+export class CommunityModule {}

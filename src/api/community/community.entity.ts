@@ -4,21 +4,21 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { v4 as uuidv4 } from 'uuid';
 
-// import { Channel } from '../channel/channel.entity';
+import { Tenant } from '../tenant/tenant.entity';
 // import { Peer } from '../peer/peer.entity';
 // import { Message } from '../message/message.entity';
 
 @Entity()
 @Unique(['slug'])
-export class Tenant {
+export class Community {
   @PrimaryColumn('uuid')
   id: string;
 
-  @ApiProperty({ example: '', description: 'A string that represents this tenant' })
+  @ApiProperty({ example: '', description: 'A string that represents this community' })
   @Column({ default: 'hello-world'})
   slug: string;
 
-  @ApiProperty({ example: '', description: 'A string that describes this tenant' })
+  @ApiProperty({ example: '', description: 'A string that describes this community' })
   @Column({ default: 'This is an example description here.'})
   description: string;
 
@@ -26,16 +26,16 @@ export class Tenant {
    * Other properties and relationships as needed
    */
 
-  // // channels
-  // @OneToMany(() => Channel, channel => channel.tenant, { nullable: true })
-  // channels: Channel[]
+  // tenants
+  @OneToMany(() => Tenant, tenant => tenant.community, { nullable: true })
+  tenants: Tenant[]
 
   // // peers
-  // @OneToMany(() => Peer, peer => peer.tenant, { nullable: true })
+  // @OneToMany(() => Peer, peer => peer.community, { nullable: true })
   // peers: Peer[]
 
   // // messages
-  // @OneToMany(() => Message, message => message.tenant, { nullable: true })
+  // @OneToMany(() => Message, message => message.community, { nullable: true })
   // messages: Message[]
 
   @CreateDateColumn({ type: 'timestamp' })
@@ -49,6 +49,6 @@ export class Tenant {
     if (!this.id) {
       this.id = uuidv4();
     }
-    console.log('tenant insert', this.id)
+    console.log('community insert', this.id)
   }
 }
