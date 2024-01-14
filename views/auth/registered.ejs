@@ -1,0 +1,7 @@
+<% if (registered.error) { %>
+  Error: <%- registered.driverError.detail %>
+<% } else if (registered.message) { %>
+  <%- registered.message %>
+<% } else { %>
+  Successfully registered: <%- registered.username %>
+<% } %>

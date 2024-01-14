@@ -24,7 +24,7 @@ export class SessionService {
       );
     }
   
-    // query.leftJoinAndSelect('session.category', 'category');
+    query.leftJoinAndSelect('session.user', 'user');
     
     const offset = (page - 1) * limit;
   
@@ -39,18 +39,18 @@ export class SessionService {
         id: id
       },
       relations: [
-        // 'category',
+        'user',
       ]
     });
   }
 
-  async findByExternalId(externalId: string): Promise<Session> {
+  async findByCookie(cookie: string): Promise<Session> {
     return this.sessionRepository.findOne({ 
       where: {
-        externalId: externalId
+        cookie: cookie
       },
       relations: [
-        // 'category',
+        'user',
       ]
     });
   }

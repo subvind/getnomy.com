@@ -40,15 +40,15 @@ export class SessionController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a session by external id' })
+  @ApiOperation({ summary: 'Get a session by cookie' })
   @ApiResponse({ status: 200, description: 'Success' })
-  @Get('get/:externalId')
+  @Get('cookie/:cookie')
   async findSingle(
     @Req() req: Request,
-    @Param('externalId') externalId: string,
+    @Param('cookie') cookie: string
   ): Promise<Session> {
-    const payload = await this.sessionService.findByExternalId(externalId);
-    
+    const payload = await this.sessionService.findByCookie(cookie);
+
     return payload;
   }
 
@@ -60,7 +60,18 @@ export class SessionController {
     @Req() req: Request,
     @Body() sessionData: Session
   ): Promise<Session> {
-    const payload = await this.sessionService.create(sessionData);
+    let payload: any;
+
+    sessionData.ipAddress = req.headers['X-Forwarded-For'];
+    sessionData.userAgent = req.headers['user-agent'];
+    
+    try {
+      payload = await this.sessionService.create(sessionData);
+      payload.error = false;
+    } catch (e) {
+      payload = e
+      payload.error = true;
+    }
     
     return payload;
   }

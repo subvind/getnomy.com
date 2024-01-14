@@ -26,16 +26,21 @@
   <%- include('header'); %>
   <br />
   <br />
-  <div id="main-result" class="container">
-    <%- include('marketing'); %>
+  <div class="container">
+    <%- include('modules'); %>
   </div>
+  <br />
+  <hr>
+  <br />
+  <br />
 
-  <br />
-  <br />
+  <div id="main-result" class="container">
+    <%- include('tenants/index', { tenantTable }); %>
+  </div>
   <br />
 
-  <%- include('button'); %>
-  
+  <%- include('auth/index') %>
+
   <%- include('footer'); %>
 
   <!-- Include htmx -->

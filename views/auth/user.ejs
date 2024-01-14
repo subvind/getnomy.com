@@ -1,0 +1,45 @@
+<div id="user">
+  <div class="row">
+    <div id="test1" class="col s12">
+      <%- include('register') %>
+    </div>
+    <div id="test2" class="col s12">
+      <%- include('login') %>
+    </div>
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6"><a href="#test1">Register</a></li>
+        <li class="tab col s6"><a class="active" href="#test2">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tabs');
+    var instances = M.Tabs.init(elems, {
+      // options
+    })
+  });
+</script>
+
+<style>
+  #user .tabs {
+    background: #aaa;
+    border: 1px solid #000;
+  }
+
+  #user .tabs a {
+    color: #000;
+  }
+
+  #user .tabs .indicator {
+    background-color: #000;
+  }
+  
+  #user .tabs .tab a:hover,
+  #user .tabs .tab a.active {
+    background-color: #999 !important;
+  }
+</style>

@@ -1,0 +1,50 @@
+<div class="card">
+  <span class="title">Tenant Silo</span>
+  <br />
+  <div class="row">
+    <div class="col s12">
+      <h5 style="margin: 0;">Information is contained within data silos which house community's database records. For IMS these db table records would be peers, channels, and messages. Configuring a Tenant Silo for your community is a requirment before getting started with IMS.</h5>
+      <br />
+      <p style="margin: 0;">Get started with Tenant Silos by</p>
+      <button
+        hx-get="/tenants/new-tenant"
+        hx-target="#tenant-result"
+        hx-swap="innerHTML"
+        class="btn btn-large black"
+      >
+        <i class="material-icons left">create</i>Creating
+      </button>
+      <button
+        hx-get="/tenants/list-tenants"
+        hx-target="#tenant-result"
+        hx-swap="innerHTML"
+        class="btn btn-large black"
+      >
+        <i class="material-icons left">list</i>Listing
+      </button>
+      <br />
+      <p style="margin: 0;">tenant records for this community.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .result {
+    border: 5px dashed #eee;
+    padding: 1em;
+  }
+  .title {
+    border: 1px solid #000;
+    font-size: 1.5em;
+    position: absolute; 
+    top: -0.8em; 
+    left: 0.5em; 
+    background-color: #aaa;
+    padding: 0 0.5em;
+  }
+  .card {
+    border: 1px solid #000;
+    position: relative;
+    background: #fff;
+  }
+</style>

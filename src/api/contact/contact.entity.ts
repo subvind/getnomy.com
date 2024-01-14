@@ -7,26 +7,23 @@ import { v4 as uuidv4 } from 'uuid';
 import { User } from '../user/user.entity';
 
 @Entity()
-@Unique(['cookie'])
-export class Session {
+@Unique(['emailAddress'])
+@Unique(['phoneNumber'])
+export class Contact {
   @PrimaryColumn('uuid')
   id: string;
 
-  @ApiProperty({ example: 'ab132f38-7667-4be9-a2af-4c5d3ec0bff1', description: 'The ip address of the session' })
-  @Column()
-  cookie: string; // uuid generated client side kept in localstorage
-
-  @ApiProperty({ example: '127.0.0.1', description: 'The ip address of the session' })
-  @Column()
-  ipAddress: string;
-
-  @ApiProperty({ example: 'chrome', description: 'The user agent of the session' })
-  @Column()
-  userAgent: string;
-
-  // user id
-  @ManyToOne(() => User, user => user.id)
+  // Reference to the owning side entity (User)
+  // No specific relationship decorator is needed here
   user: User;
+
+  @ApiProperty({ example: 'travis.burandt@gmail.com', description: 'The email address of the contact' })
+  @Column()
+  emailAddress: string;
+
+  @ApiProperty({ example: '2817980497', description: 'The phone number of the contact' })
+  @Column()
+  phoneNumber: string;
 
   /**
    * Other properties and relationships as needed
@@ -43,6 +40,6 @@ export class Session {
     if (!this.id) {
       this.id = uuidv4();
     }
-    console.log('session insert', this.id)
+    console.log('contact insert', this.id)
   }
 }

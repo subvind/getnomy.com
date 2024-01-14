@@ -1,0 +1,63 @@
+<br />
+<div class="card">
+  <span class="title">List Tenants</span>
+  <br />
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div style="background: #eee; margin: 0.5em; border: 1px solid #aaa;">
+        <form 
+          hx-get="/tenants/table"
+          hx-target="#tenants-table"
+          hx-swap="innerHTML"
+          hx-trigger="submit"
+        >
+          <div class="row" style="margin: 0;">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input type="text" name="query" placeholder="Search..." required>
+              <button type="submit" class="btn black btn-small right">find</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="input-field col s12">
+        <p style="margin: 0;">list items by:</p>
+        <select class="browser-default">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">recent activity</option>
+          <option value="2">date created at</option>
+          <option value="3">number of messages</option>
+          <option value="4">number of participants</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="tenants-table">
+    <%- include('tenants-table', { table }); %>
+  </div>
+</div>
+
+<style>
+  .result {
+    border: 5px dashed #eee;
+    padding: 1em;
+  }
+  .title {
+    border: 1px solid #000;
+    font-size: 1.5em;
+    position: absolute; 
+    top: -0.8em; 
+    left: 0.5em; 
+    background-color: #aaa;
+    padding: 0 0.5em;
+  }
+  .card {
+    border: 1px solid #000;
+    position: relative;
+    background: #fff;
+  }
+</style>

@@ -1,0 +1,86 @@
+<div class="wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Name / Description</th>
+        <th style="text-align: center;"># of Messages</th>
+        <th style="text-align: center;"># of Participants</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% table.data.forEach((item, index) => { %>
+        <tr>
+          <td style="min-width: 300px;">
+            <div class="row" style="margin: 0;">
+              <div class="col s3 m2">
+                <button class="btn btn-large black right btn-floating"><i class="material-icons">markunread_mailbox</i></button>
+              </div>
+              <div class="col s9 m10">
+                <%- item.slug %>
+                <br />
+                <%- item.description %>
+              </div>
+            </div>
+          </td>
+          <td style="text-align: center;">11</td>
+          <td style="text-align: center;">2</td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row footer" style="margin: 0;">
+  <div class="col s12 m6 left-side">
+    <ul class="pagination">
+      <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+      <li class="active"><a href="#!">1</a></li>
+      <li class="waves-effect"><a href="#!">2</a></li>
+      <li class="waves-effect"><a href="#!">3</a></li>
+      <li class="waves-effect"><a href="#!">4</a></li>
+      <li class="waves-effect"><a href="#!">5</a></li>
+      <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
+  </div>
+  <div class="col s12 m6 right-side">
+    <div style="padding: 1em;">
+      showing 1-10 of <%- table.total %> results
+    </div>
+  </div>
+</div>
+
+<style>
+  #tenants-table .wrapper {
+    overflow-x: auto;
+  }
+
+  #tenants-table table {
+    min-width: 500px;
+  }
+
+  #tenants-table table thead {
+    background: #eee; 
+    border-top: 1px solid #aaa;
+  }
+
+  @media (min-width: 600px) {
+    /* If the screen width is 600 pixels or more, use 80% of the browser width */
+    #tenants-table .footer .left-side {
+      text-align: left;
+    }
+    #tenants-table .footer .right-side {
+      text-align: right;
+    }
+  }
+
+  @media (max-width: 599px) {
+    /* If the screen width is less than 600 pixels, use a fixed width of 300 pixels */
+    #tenants-table .footer .left-side {
+      text-align: center;
+    }
+    #tenants-table .footer .right-side {
+      text-align: center;
+    }
+  }
+</style>

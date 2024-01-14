@@ -12,6 +12,7 @@ const config: TypeOrmModuleOptions = {
   database: process.env.POSTGRES_DATABASE || 'subvind', // PostgreSQL database name
   entities: [__dirname + '/**/*.entity{.ts,.js}'], // Location of entity files
   synchronize: true, // Automatic schema synchronization (disable in production)
+  entityPrefix: 'get_'
 };
 
 export default config;
