@@ -14,7 +14,7 @@ export class CommunityController {
     private readonly communityService: CommunityService,
   ) {}
 
-  @ApiOperation({ summary: 'Get all communities' })
+  @ApiOperation({ summary: 'Find all communities' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get()
   async findAll(
@@ -29,7 +29,7 @@ export class CommunityController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a community by id' })
+  @ApiOperation({ summary: 'Find a community by id' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get(':id')
   async findOne(
@@ -41,7 +41,7 @@ export class CommunityController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a community by URL slug' })
+  @ApiOperation({ summary: 'Find a community by URL slug' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get('slug/:slug')
   async findSingle(
@@ -87,7 +87,7 @@ export class CommunityController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Delete a community' })
+  @ApiOperation({ summary: 'Remove a community' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Delete(':id')
   async remove(

@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { HttpService } from '@nestjs/axios';
 import { catchError, firstValueFrom } from 'rxjs';
 
+import { ApiTags, ApiResponse, ApiOperation, ApiBody } from '@nestjs/swagger';
+
 const port = process.env.PORT || 3000
 
 @Controller()
@@ -12,6 +14,8 @@ export class AppController {
     private readonly httpService: HttpService
   ) {}
 
+  @ApiOperation({ summary: 'Load full homepage view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Get()
   @Render('index') // 'index' corresponds to the name of your view file without extension
   async getIndex() {
@@ -36,6 +40,8 @@ export class AppController {
     };
   }
 
+  @ApiOperation({ summary: 'Load full community view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Get('community/:communitySlug')
   @Render('indexCommunity') // 'index' corresponds to the name of your view file without extension
   async getCommunity(
@@ -81,6 +87,8 @@ export class AppController {
     };
   }
 
+  @ApiOperation({ summary: 'Load full tenant view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Get('tenant/:tenantSlug')
   @Render('indexTenant') // 'index' corresponds to the name of your view file without extension
   async getTenant(
@@ -129,27 +137,4 @@ export class AppController {
       tenant: tenantPayload
     };
   }
-
-  @Get('message')
-  @Render('message')
-  getMessage() {
-    return {};
-  }
-
-  @Post('broadcast')
-  postData(@Req() req, @Res() res) {
-    // Handle your POST request data
-    const channel = req.body.channel || 'No channel received';
-
-    // You can process the data here and send a response
-    const response = `Received data: ${channel}`;
-
-    // Send the response back
-    res.send(response);
-  }
-
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
 }

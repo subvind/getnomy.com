@@ -14,6 +14,8 @@ export class CommunitiesController {
     private readonly httpService: HttpService
   ) {}
 
+  @ApiOperation({ summary: 'Load partial communities view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Get()
   @Render('communities/index')
   getCommunities() {
@@ -22,6 +24,8 @@ export class CommunitiesController {
     };
   }
 
+  @ApiOperation({ summary: 'Load partial list communities view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Get('list-communities')
   @Render('communities/list-communities')
   async listCommunities() {
@@ -45,12 +49,16 @@ export class CommunitiesController {
     };
   }
 
+  @ApiOperation({ summary: 'Load partial new community view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Get('new-community')
   @Render('communities/new-community')
   newTenant() {
     return { layout: false };
   }
 
+  @ApiOperation({ summary: 'Load partial community created view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Post()
   @Render('communities/community-created')
   async createTenant(
@@ -74,6 +82,8 @@ export class CommunitiesController {
     }
   }
 
+  @ApiOperation({ summary: 'Load partial communities table view' })
+  @ApiResponse({ status: 200, description: 'Success' })
   @Get('table')
   @Render('communities/communities-table')
   async communitiesTable(

@@ -14,7 +14,7 @@ export class TenantController {
     private readonly tenantService: TenantService,
   ) {}
 
-  @ApiOperation({ summary: 'Get all tenants' })
+  @ApiOperation({ summary: 'Find all tenants' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get()
   async findAll(
@@ -29,7 +29,7 @@ export class TenantController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a tenant by id' })
+  @ApiOperation({ summary: 'Find a tenant by id' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get(':id')
   async findOne(
@@ -87,7 +87,7 @@ export class TenantController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Delete a tenant' })
+  @ApiOperation({ summary: 'Remove a tenant' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Delete(':id')
   async remove(

@@ -13,7 +13,7 @@ export class ContactController {
     private readonly contactService: ContactService
   ) {}
 
-  @ApiOperation({ summary: 'Get all contacts' })
+  @ApiOperation({ summary: 'Find all contacts' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get()
   async findAll(
@@ -28,7 +28,7 @@ export class ContactController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a contact by id' })
+  @ApiOperation({ summary: 'Find a contact by id' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get(':id')
   async findOne(
@@ -40,7 +40,7 @@ export class ContactController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a contact by email address' })
+  @ApiOperation({ summary: 'Find a contact by email address' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get('emailAddress/:emailAddress')
   async getByEmailAddress(
@@ -52,7 +52,7 @@ export class ContactController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a contact by phone number' })
+  @ApiOperation({ summary: 'Find a contact by phone number' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get('phoneNumber/:phoneNumber')
   async getByPhoneNumber(
@@ -98,7 +98,7 @@ export class ContactController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Delete a contact' })
+  @ApiOperation({ summary: 'Remove a contact' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Delete(':id')
   async remove(

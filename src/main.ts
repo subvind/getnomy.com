@@ -28,7 +28,7 @@ async function bootstrap() {
 
   // Create a Swagger document builder
   const options = new DocumentBuilder()
-    .setTitle('Instant Messenger Software - nomy.IMS')
+    .setTitle('Community Management System - nomy.GET')
     .setDescription(`Built with NestJS & HTMX!`)
     .setVersion('1.0')
     .build();

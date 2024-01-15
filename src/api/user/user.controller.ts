@@ -13,7 +13,7 @@ export class UserController {
     private readonly userService: UserService
   ) {}
 
-  @ApiOperation({ summary: 'Get all users' })
+  @ApiOperation({ summary: 'Find all users' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get()
   async findAll(
@@ -28,7 +28,7 @@ export class UserController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a user by id' })
+  @ApiOperation({ summary: 'Find a user by id' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get(':id')
   async findOne(
@@ -86,7 +86,7 @@ export class UserController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Delete a user' })
+  @ApiOperation({ summary: 'Remove a user' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Delete(':id')
   async remove(

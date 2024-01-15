@@ -13,7 +13,7 @@ export class SessionController {
     private readonly sessionService: SessionService
   ) {}
 
-  @ApiOperation({ summary: 'Get all sessions' })
+  @ApiOperation({ summary: 'Find all sessions' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get()
   async findAll(
@@ -28,7 +28,7 @@ export class SessionController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a session by id' })
+  @ApiOperation({ summary: 'Find a session by id' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get(':id')
   async findOne(
@@ -40,7 +40,7 @@ export class SessionController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Get a session by cookie' })
+  @ApiOperation({ summary: 'Find a session by cookie' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Get('cookie/:cookie')
   async findSingle(
@@ -89,7 +89,7 @@ export class SessionController {
     return payload;
   }
 
-  @ApiOperation({ summary: 'Delete a session' })
+  @ApiOperation({ summary: 'Remove a session' })
   @ApiResponse({ status: 200, description: 'Success' })
   @Delete(':id')
   async remove(
