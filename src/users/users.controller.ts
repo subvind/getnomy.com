@@ -8,7 +8,7 @@ import { catchError, firstValueFrom } from 'rxjs';
 const port = process.env.PORT || 3000
 
 @ApiTags('users')
-@Controller('users')
+@Controller('htmx/users')
 export class UsersController {
   constructor(
     private readonly httpService: HttpService

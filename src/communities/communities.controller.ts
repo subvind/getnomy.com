@@ -8,7 +8,7 @@ import { ApiTags, ApiResponse, ApiOperation, ApiBody } from '@nestjs/swagger';
 const port = process.env.PORT || 3000
 
 @ApiTags('communities')
-@Controller('communities')
+@Controller('htmx/communities')
 export class CommunitiesController {
   constructor(
     private readonly httpService: HttpService

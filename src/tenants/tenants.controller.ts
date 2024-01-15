@@ -8,7 +8,7 @@ import { ApiTags, ApiResponse, ApiOperation, ApiBody } from '@nestjs/swagger';
 const port = process.env.PORT || 3000
 
 @ApiTags('tenants')
-@Controller('tenants')
+@Controller('htmx/tenants')
 export class TenantsController {
   constructor(
     private readonly httpService: HttpService

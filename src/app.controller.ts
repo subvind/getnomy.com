@@ -36,7 +36,7 @@ export class AppController {
     };
   }
 
-  @Get(':communitySlug')
+  @Get('community/:communitySlug')
   @Render('indexCommunity') // 'index' corresponds to the name of your view file without extension
   async getCommunity(
     @Param('communitySlug') communitySlug: string
@@ -78,6 +78,55 @@ export class AppController {
       title: 'Instant Messenger Software - nomy.IMS',
       tenantTable: tenantsPayload.data,
       community: communityPayload
+    };
+  }
+
+  @Get('tenant/:tenantSlug')
+  @Render('indexTenant') // 'index' corresponds to the name of your view file without extension
+  async getTenant(
+    @Param('communitySlug') communitySlug: string,
+    @Param('tenantSlug') tenantSlug: string
+  ) {
+    let communityPayload
+    try {
+      communityPayload = await firstValueFrom(
+        this.httpService.get(`http://localhost:${port}/api/communities/slug/${communitySlug}`).pipe(
+          catchError((error: any) => {
+            console.log('error', error)
+            return Promise.reject(error.response.data);
+          })
+        )
+      );
+    } catch (e) {
+      return {
+        title: 'Instant Messenger Software - nomy.IMS',
+        community: null,
+        tenant: null,
+      }
+    }
+
+    let tenantPayload
+    try {
+      tenantPayload = await firstValueFrom(
+        this.httpService.get(`http://localhost:${port}/api/communities/slug/${tenantSlug}`).pipe(
+          catchError((error: any) => {
+            console.log('error', error)
+            return Promise.reject(error.response.data);
+          })
+        )
+      );
+    } catch (e) {
+      return {
+        title: 'Instant Messenger Software - nomy.IMS',
+        community: null,
+        tenant: null,
+      }
+    }
+
+    return {
+      title: 'Instant Messenger Software - nomy.IMS',
+      community: communityPayload,
+      tenant: tenantPayload
     };
   }
 
