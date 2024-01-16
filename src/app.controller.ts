@@ -35,7 +35,7 @@ export class AppController {
     );
 
     return {
-      title: 'Instant Messenger Software - nomy.IMS',
+      title: 'Community Management System - nomy.GET',
       communityTable: payload.data
     };
   }
@@ -59,7 +59,7 @@ export class AppController {
       );
     } catch (e) {
       return {
-        title: 'Instant Messenger Software - nomy.IMS',
+        title: 'Community Management System - nomy.GET',
         tenantTable: null,
         community: null
       }
@@ -81,9 +81,9 @@ export class AppController {
     );
 
     return {
-      title: 'Instant Messenger Software - nomy.IMS',
+      title: 'Community Management System - nomy.GET',
       tenantTable: tenantsPayload.data,
-      community: communityPayload
+      community: communityPayload.data
     };
   }
 
@@ -92,31 +92,12 @@ export class AppController {
   @Get('tenant/:tenantSlug')
   @Render('indexTenant') // 'index' corresponds to the name of your view file without extension
   async getTenant(
-    @Param('communitySlug') communitySlug: string,
     @Param('tenantSlug') tenantSlug: string
   ) {
-    let communityPayload
-    try {
-      communityPayload = await firstValueFrom(
-        this.httpService.get(`http://localhost:${port}/api/communities/slug/${communitySlug}`).pipe(
-          catchError((error: any) => {
-            console.log('error', error)
-            return Promise.reject(error.response.data);
-          })
-        )
-      );
-    } catch (e) {
-      return {
-        title: 'Instant Messenger Software - nomy.IMS',
-        community: null,
-        tenant: null,
-      }
-    }
-
     let tenantPayload
     try {
       tenantPayload = await firstValueFrom(
-        this.httpService.get(`http://localhost:${port}/api/communities/slug/${tenantSlug}`).pipe(
+        this.httpService.get(`http://localhost:${port}/api/tenants/slug/${tenantSlug}`).pipe(
           catchError((error: any) => {
             console.log('error', error)
             return Promise.reject(error.response.data);
@@ -125,16 +106,15 @@ export class AppController {
       );
     } catch (e) {
       return {
-        title: 'Instant Messenger Software - nomy.IMS',
+        title: 'Community Management System - nomy.GET',
         community: null,
         tenant: null,
       }
     }
 
     return {
-      title: 'Instant Messenger Software - nomy.IMS',
-      community: communityPayload,
-      tenant: tenantPayload
+      title: 'Community Management System - nomy.GET',
+      tenant: tenantPayload.data
     };
   }
 }
