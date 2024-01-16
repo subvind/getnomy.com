@@ -5,7 +5,7 @@ import { ApiTags, ApiResponse, ApiOperation, ApiBody } from '@nestjs/swagger';
 import { HttpService } from '@nestjs/axios';
 import { catchError, firstValueFrom } from 'rxjs';
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 1337
 
 @ApiTags('users')
 @Controller('htmx/users')

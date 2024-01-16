@@ -5,7 +5,7 @@ import { catchError, firstValueFrom } from 'rxjs';
 
 import { ApiTags, ApiResponse, ApiOperation, ApiBody } from '@nestjs/swagger';
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 1337
 
 @ApiTags('tenants')
 @Controller('htmx/tenants')
