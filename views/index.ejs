@@ -4,18 +4,13 @@
 <body>
   <%- include('header'); %>
   <%- include('navigation'); %>
-  <nav class="black">
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="col s12">
-          <a href="/" class="breadcrumb">CMS</a>
-          <a href="/" class="breadcrumb">Homepage</a>
-          <a href="/" class="breadcrumb">Get</a>
-          <a href="#" class="brand-logo right">NOMY</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <%- include('breadcrumb', {
+    links: [
+      { name: `CMS`, url: `/` },
+      { name: `Homepage`, url: `/` },
+      { name: `Get`, url: `/` },
+    ]
+  }); %>
   <br />
   <br />
   <div id="main-result" class="container">

@@ -3,18 +3,13 @@
 <%- include('head', { title }); %>
 <body>
   <%- include('header'); %>
-  <nav class="black">
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="col s12">
-          <a href="/" class="breadcrumb">CMS</a>
-          <a href="/" class="breadcrumb">Community</a>
-          <a href="/community/<%- community.slug %>" class="breadcrumb"><%- community.slug %></a>
-          <a href="#" class="brand-logo right">NOMY</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <%- include('breadcrumb', {
+    links: [
+      { name: `CMS`, url: `/` },
+      { name: `Community`, url: `/` },
+      { name: `${community.slug}`, url: `/community/${community.slug}` },
+    ]
+  }); %>
   <br />
   <br />
   <%- // JSON.stringify(community, null, 2); %>

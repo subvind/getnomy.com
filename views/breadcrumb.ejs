@@ -1,0 +1,12 @@
+<nav class="black">
+  <div class="container">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <% links.forEach((value, index) => { %>
+          <a href="<%- value.url -%>" class="breadcrumb"><%- value.name -%></a>
+        <% }) %>
+        <a href="#" class="brand-logo right">NOMY</a>
+      </div>
+    </div>
+  </div>
+</nav>
