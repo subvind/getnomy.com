@@ -6,6 +6,8 @@ import { Session } from './session.entity';
 
 import { ApiTags, ApiResponse, ApiOperation, ApiBody } from '@nestjs/swagger';
 
+import { Request } from 'express';
+
 @ApiTags('sessions')
 @Controller('api/sessions')
 export class SessionController {
@@ -62,8 +64,10 @@ export class SessionController {
   ): Promise<Session> {
     let payload: any;
 
-    sessionData.ipAddress = req.headers['X-Forwarded-For'];
+    sessionData.ipAddress = (req.headers['x-forwarded-for'] || req.socket.remoteAddress) as string;
     sessionData.userAgent = req.headers['user-agent'];
+
+    console.log('new session', sessionData);
     
     try {
       payload = await this.sessionService.create(sessionData);

@@ -1,0 +1,79 @@
+<script>
+  (async () => {
+    function generateRandomString(length) {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+      }
+
+      return result;
+    }
+
+    function makeCookie() {
+      const cookie = generateRandomString(64);
+      localStorage.setItem('cookie', cookie);
+      console.log('make cookie', cookie);
+      return cookie;
+    }
+
+    function getCookie() {
+      let cookie = localStorage.getItem('cookie');
+      return cookie;
+    }
+
+    async function setSessionToServer(value) {
+      var endpoint = `/api/sessions`;
+
+      return await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cookie: value
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+
+    async function getSessionFromServer(value) {
+      var endpoint = `/api/sessions/cookie/${value}`;
+
+      return await fetch(endpoint, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+
+    var cookie = getCookie();
+    var session = null;
+    console.log('cookie from localstorage', cookie)
+
+    if (cookie) {
+      session = await getSessionFromServer(cookie);
+    } else {
+      cookie = makeCookie();
+      session = await setSessionToServer(cookie);
+    }
+
+    console.log('session from server', session);
+  })();
+</script>

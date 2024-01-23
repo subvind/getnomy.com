@@ -9,6 +9,7 @@ import { HttpModule } from '@nestjs/axios';
 // api
 import { CommunityModule } from './api/community/community.module';
 import { ContactModule } from './api/contact/contact.module';
+import { SessionModule } from './api/session/session.module';
 import { TenantModule } from './api/tenant/tenant.module';
 import { UserModule } from './api/user/user.module';
 
@@ -25,6 +26,7 @@ import { UsersModule } from './users/users.module';
     // api
     CommunityModule,
     ContactModule,
+    SessionModule,
     TenantModule,
     UserModule,
 
