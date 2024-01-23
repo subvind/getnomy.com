@@ -12,15 +12,29 @@
       return result;
     }
 
+    // Parse the cookies into an object
+    function parseCookies(cookieString) {
+      return cookieString.split(';').reduce((cookies, cookie) => {
+        const [name, value] = cookie.trim().split('=');
+        cookies[name] = value;
+        return cookies;
+      }, {});
+    }
+
     function makeCookie() {
       const cookie = generateRandomString(32);
-      localStorage.setItem('cookie', cookie);
+
+      // Set a cookie with domain attribute on getnomy.com
+      document.cookie = `cookie=${cookie}; domain=.${window.location.hostname}; path=/`;
+
       console.log('make cookie', cookie);
       return cookie;
     }
 
     function getCookie() {
-      let cookie = localStorage.getItem('cookie');
+      // Get a specific cookie value by name
+      const cookie = parseCookies(document.cookie)['cookie'];
+
       return cookie;
     }
 
