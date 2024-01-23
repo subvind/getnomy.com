@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-content">
+    <span class="title">My Session</span>
+    <form 
+      hx-post="/htmx/contacts"
+      hx-target="#contact-created"
+      hx-swap="innerHTML"
+      hx-trigger="submit"
+    >
+      <p style="margin: 0;">cookie:</p>
+      <input type="text" name="cookie" disabled required>
+      <br />
+      <p style="margin: 0;">ip address:</p>
+      <input type="text" name="ipAddress" disabled required>
+      <br />
+      <p style="margin: 0;">user agent:</p>
+      <textarea name="userAgent" disabled required></textarea>
+      <!-- <button type="submit" class="btn black btn-small">Submit</button> -->
+    </form>
+    <!-- <br />
+    <div class="result" id="contact-created">
+      Result will be displayed here.
+    </div> -->
+  </div>
+</div>
+
+<style>
+  .result {
+    border: 5px dashed #eee;
+    padding: 1em;
+  }
+</style>
+
+<script>
+  function applyRecordToFields (mySession) {
+    if (mySession) {
+      document.querySelector('input[name="cookie"]').value = mySession.cookie || '';
+      document.querySelector('input[name="ipAddress"]').value = mySession.ipAddress || '';
+      document.querySelector('textarea[name="userAgent"]').value = mySession.userAgent || '';
+    }
+  }
+
+  let mySession = JSON.parse(localStorage.getItem('session'));
+  applyRecordToFields(mySession);
+
+  /**
+   * listen to session
+   */
+  function handleSessionChange(event) {
+    if (event.key === 'session') {
+      mySession = JSON.parse(localStorage.getItem('session'));
+      console.log('my session changed', mySession);
+      applyRecordToFields(mySession);
+    }
+  }
+  window.addEventListener('storage', handleSessionChange);
+</script>

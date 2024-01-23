@@ -13,7 +13,7 @@
     }
 
     function makeCookie() {
-      const cookie = generateRandomString(64);
+      const cookie = generateRandomString(32);
       localStorage.setItem('cookie', cookie);
       console.log('make cookie', cookie);
       return cookie;
@@ -75,5 +75,7 @@
     }
 
     console.log('session from server', session);
+    localStorage.setItem('session', JSON.stringify(session, null, 2));
+    handleSessionChange({ key: 'session' });
   })();
 </script>
