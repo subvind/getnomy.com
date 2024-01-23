@@ -16,14 +16,9 @@
   <div id="main-result" class="container">
     <%- include('communities/index', { communityTable }); %>
   </div>
-  <br />
-  <hr>
-  <br />
-  <br />
-  <div class="container">
-    <%- include('modules'); %>
-  </div>
-  <br />
+  <%- include('modules', {
+    path: ``
+  }); %>
   <%- include('auth/index') %>
   <%- include('footer'); %>
   <%- include('session'); %>

@@ -17,7 +17,9 @@
   <div id="main-result" class="container">
     <%- include('tenants/index', { tenantTable }); %>
   </div>
-  <br />
+  <%- include('modules', {
+    path: `/community/${community.slug}`
+  }); %>
   <%- include('auth/index') %>
   <%- include('footer'); %>
   <%- include('session'); %>

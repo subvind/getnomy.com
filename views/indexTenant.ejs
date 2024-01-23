@@ -15,7 +15,9 @@
   <div id="main-result" class="container">
     config tenant
   </div>
-  <br />
+  <%- include('modules', {
+    path: `/tenants/${tenant.slug}`
+  }); %>
   <%- include('auth/index') %>
   <%- include('footer'); %>
   <%- include('session'); %>
