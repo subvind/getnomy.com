@@ -16,7 +16,7 @@
     config tenant
   </div>
   <%- include('modules', {
-    path: `/tenants/${tenant.slug}`
+    path: `/tenant/${tenant.slug}`
   }); %>
   <%- include('auth/index') %>
   <%- include('footer'); %>
