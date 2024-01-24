@@ -7,11 +7,12 @@ import config from './typeorm.config'; // Import your TypeORM configuration file
 import { HttpModule } from '@nestjs/axios';
 
 // api
-import { CommunityModule } from './api/community/community.module';
-import { ContactModule } from './api/contact/contact.module';
-import { SessionModule } from './api/session/session.module';
-import { TenantModule } from './api/tenant/tenant.module';
-import { UserModule } from './api/user/user.module';
+import { AuthModule as APIAuthModule } from './api/auth/auth.module';
+import { CommunityModule as APICommunityModule } from './api/community/community.module';
+import { ContactModule as APIContactModule } from './api/contact/contact.module';
+import { SessionModule as APISessionModule } from './api/session/session.module';
+import { TenantModule as APITenantModule } from './api/tenant/tenant.module';
+import { UserModule as APIUserModule } from './api/user/user.module';
 
 // frontend
 import { AuthModule } from './auth/auth.module';
@@ -24,11 +25,12 @@ import { UsersModule } from './users/users.module';
     HttpModule,
     TypeOrmModule.forRoot(config),
     // api
-    CommunityModule,
-    ContactModule,
-    SessionModule,
-    TenantModule,
-    UserModule,
+    APIAuthModule,
+    APICommunityModule,
+    APIContactModule,
+    APISessionModule,
+    APITenantModule,
+    APIUserModule,
 
     // frontend
     AuthModule,

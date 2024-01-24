@@ -51,4 +51,29 @@ export class AuthController {
       registered: payload.data
     }
   }
+
+  @Post('login')
+  @Render('auth/welcome')
+  async loginUser(
+    @Req() req: Request,
+    @Body() userData: any
+  ) {
+    console.log('userData', userData);
+    
+    const payload = await firstValueFrom(
+      this.httpService.post(
+        `http://localhost:${port}/auth/login`, // url
+        userData // data
+      ).pipe(
+        catchError((error: any) => {
+          return Promise.reject(error.response.data);
+        })
+      )
+    );
+
+    return {
+      layout: false,
+      welcome: payload.data
+    }
+  }
 }

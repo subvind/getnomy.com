@@ -9,6 +9,12 @@ import { hash } from 'bcrypt';
 import { Contact } from '../contact/contact.entity';
 import { Session } from '../session/session.entity';
 
+export enum AuthStatus {
+  BANNED = 'Banned',
+  VERIFIED = 'Verified',
+  PENDING = 'Pending',
+}
+
 @Entity()
 @Unique(['username']) 
 export class User {
@@ -23,6 +29,12 @@ export class User {
   @Column({ select: false }) // Exclude 'password' from default selection
   password: string;
 
+  @Column({ default: 'Pending' })
+  authStatus: AuthStatus; // status can be 'Pending', 'Verified', 'Banned'
+
+  @Column({ select: false, nullable: true })
+  recoverPasswordToken: string;
+  
   /**
    * Other properties and relationships as needed
    */
