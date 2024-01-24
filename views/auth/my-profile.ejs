@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-content">
+    <span class="title">My Profile</span>
+    <form 
+      hx-post="/htmx/auth/sign-out"
+      hx-target="#sign-out"
+      hx-swap="innerHTML"
+      hx-trigger="submit"
+    >
+      <p style="margin: 0;">username:</p>
+      <input id="usernameField" type="text" name="username" disabled>
+      <br />
+      <button type="submit" class="btn black btn-small">sign out</button>
+    </form>
+    <br />
+    <div class="result" id="sign-out">
+      <a href="#" id="dasjhadsjlk"></a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .result {
+    border: 5px dashed #eee;
+    padding: 1em;
+  }
+</style>
+
+<script>
+  // Parse the JWT and display the result in the div
+  token = localStorage.getItem('token');
+
+  let dasjhadsjlk = document.getElementById('dasjhadsjlk')
+
+  function applyRecordToFields (myToken) {
+    if (myToken) {
+      document.getElementById('usernameField').value = myToken.username;
+      dasjhadsjlk.href = `/user/${myToken.username}`;
+      dasjhadsjlk.innerText = `https://${window.location.hostname}/user/${myToken.username}`;
+    }
+  }
+
+  try {
+    if (token) {
+      const parsedToken = JSON.parse(atob(token.split('.')[1]));
+      applyRecordToFields(parsedToken)
+    }
+  } catch (error) {
+    console.error('Error parsing JWT:', error);
+    dasjhadsjlk.innerText = 'Error parsing JWT';
+  }
+  
+</script>

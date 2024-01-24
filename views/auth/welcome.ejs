@@ -1,1 +1,19 @@
-<%- JSON.stringify(welcome); %>
+Success! Saving token to local storage <a href="#" onclick="window.location.reload()">refresh</a> the page to confirm.
+<div id="sdlkjnsdflnjk"></div>
+
+<script>
+  localStorage.setItem('token', '<%- welcome.access_token -%>');
+
+  // Parse the JWT and display the result in the div
+  token = localStorage.getItem('token');
+
+  let sdlkjnsdflnjk = document.getElementById('sdlkjnsdflnjk')
+
+  try {
+    const parsedToken = JSON.parse(atob(token.split('.')[1]));
+    sdlkjnsdflnjk.innerText = JSON.stringify(parsedToken, null, 2);
+  } catch (error) {
+    console.error('Error parsing JWT:', error);
+    sdlkjnsdflnjk.innerText = 'Error parsing JWT';
+  }
+</script>

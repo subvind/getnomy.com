@@ -58,8 +58,6 @@ export class AuthController {
     @Req() req: Request,
     @Body() userData: any
   ) {
-    console.log('userData', userData);
-    
     const payload = await firstValueFrom(
       this.httpService.post(
         `http://localhost:${port}/auth/login`, // url
@@ -74,6 +72,18 @@ export class AuthController {
     return {
       layout: false,
       welcome: payload.data
+    }
+  }
+
+  @Post('sign-out')
+  @Render('auth/sign-out')
+  async signOutUser(
+    @Req() req: Request,
+    @Body() userData: any
+  ) {
+    return {
+      layout: false,
+      user: userData
     }
   }
 }

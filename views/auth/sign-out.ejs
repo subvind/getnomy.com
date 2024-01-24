@@ -1,0 +1,9 @@
+Success! Signing out of: <%- user.username %><br />
+in 3... 2... 1...
+
+<script>
+  setTimeout(() => {
+    localStorage.setItem('token', '');
+    window.location.reload();
+  }, 3000)
+</script>

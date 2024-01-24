@@ -1,15 +1,23 @@
 <div id="user">
   <div class="row">
-    <div id="test1" class="col s12">
+    <div id="userTabs1" class="col s12">
       <%- include('register') %>
     </div>
-    <div id="test2" class="col s12">
+    <div id="userTabs2" class="col s12">
       <%- include('login') %>
     </div>
+    <div id="userTabs3" class="col s12">
+      <%- include('my-profile') %>
+    </div>
+    <div id="userTabs4" class="col s12">
+      <%- include('my-contact') %>
+    </div>
     <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s6"><a class="active" href="#test1">Register</a></li>
-        <li class="tab col s6"><a href="#test2">Login</a></li>
+      <ul id="userTabs" class="tabs">
+        <li class="tab col s6" id="registerTab"><a href="#userTabs1">Register</a></li>
+        <li class="tab col s6" id="loginTab"><a href="#userTabs2">Login</a></li>
+        <li class="tab col s6" id="myProfileTab"><a href="#userTabs3">Profile</a></li>
+        <li class="tab col s6" id="myContactTab"><a href="#userTabs4">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -17,10 +25,34 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.tabs');
-    var instances = M.Tabs.init(elems, {
+    var userTabs = document.getElementById('userTabs');
+    var userTabsInstance = M.Tabs.init(userTabs, {
       // options
     })
+
+    // Check if there is a token in local storage
+    const token = localStorage.getItem('token');
+    const registerTab = document.getElementById('registerTab');
+    const loginTab = document.getElementById('loginTab');
+    const myProfileTab = document.getElementById('myProfileTab');
+    const myContactTab = document.getElementById('myContactTab');
+
+    if (token) {
+      // Token exists, show "Contact" tab
+      registerTab.style.display = 'none';
+      loginTab.style.display = 'none';
+      myProfileTab.style.display = 'block';
+      myContactTab.style.display = 'block';
+      userTabsInstance.select('userTabs3');
+
+    } else {
+      // Token does not exist, hide "Contact" tab
+      registerTab.style.display = 'block';
+      loginTab.style.display = 'block';
+      myProfileTab.style.display = 'none';
+      myContactTab.style.display = 'none';
+      userTabsInstance.select('userTabs1');
+    }
   });
 </script>
 
