@@ -1,28 +1,29 @@
 <br />
+<h5 style="margin: 0;">New Tenant</h5>
 <div class="card">
-  <span class="title">New Tenant</span>
-  <br />
-  <div class="row">
-    <div class="col s12 m6">
-      <form 
-        hx-post="/htmx/tenants"
-        hx-target="#tenant-created"
-        hx-swap="innerHTML"
-        hx-trigger="submit"
-      >
-        <p style="margin: 0;">slug:</p>
-        <input type="text" name="slug" placeholder="alpha" required>
-        <br />
-        <p style="margin: 0;">description:</p>
-        <textarea class="materialize-textarea" name="description" placeholder="data silo for alpha" required></textarea>
-        <br />
-        <button type="submit" class="btn black btn-small">Submit</button>
-      </form>
-      <br class="hide-on-med-and-up" />
-    </div>
-    <div class="col s12 m6">
-      <div class="result" id="tenant-created">
-        Result will be displayed here.
+  <div class="card-content">
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m6">
+        <form 
+          hx-post="/htmx/tenants"
+          hx-target="#tenant-created"
+          hx-swap="innerHTML"
+          hx-trigger="submit"
+        >
+          <p style="margin: 0;">slug:</p>
+          <input type="text" name="slug" placeholder="alpha" required>
+          <br />
+          <p style="margin: 0;">description:</p>
+          <textarea class="materialize-textarea" name="description" placeholder="data silo for alpha" required></textarea>
+          <br />
+          <button type="submit" class="btn black btn-small">Submit</button>
+        </form>
+        <br class="hide-on-med-and-up" />
+      </div>
+      <div class="col s12 m6">
+        <div class="result" id="tenant-created">
+          Result will be displayed here.
+        </div>
       </div>
     </div>
   </div>

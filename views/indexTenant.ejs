@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('head', { title }); %>
-<body>
+<%- include('app/head', { title }); %>
+<body class="has-fixed-sidenav">
+  <%- include('app/header'); %>
+
   <%- include('header'); %>
   <%- include('breadcrumb', {
     links: [

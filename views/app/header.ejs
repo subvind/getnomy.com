@@ -1,0 +1,74 @@
+<header class="navbar-fixed">
+  <nav class="navbar white black-text">
+    <a href="https://getnomy.com" class="brand-logo black-text">getnomy.com</a>
+    <div class="nav-wrapper">
+      <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="https://home.getnomy.com" class="black-text"><i class="material-icons left">home</i>HOME</a></li>
+        <li><a href="https://erp.getnomy.com" class="black-text"><i class="material-icons left">shopping_cart</i>ERP</a></li>
+        <li><a href="https://tube.getnomy.com" class="black-text"><i class="material-icons left">videocam</i>TUBE</a></li>
+        <li><a href="https://desk.getnomy.com" class="black-text"><i class="material-icons left">work</i>DESK</a></li>
+        <li><a href="https://ims.getnomy.com" class="black-text"><i class="material-icons left">chat</i>IMS</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<ul id="slide-out" class="sidenav sidenav-fixed">
+  <li><a href="#!" class="waves-effect">First Sidebar Link</a></li>
+  <li><a href="#!" class="waves-effect">Second Sidebar Link</a></li>
+  <li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+      <li class="bold waves-effect">
+        <a class="collapsible-header" tabindex="0">Pages<i class="material-icons chevron">chevron_left</i></a>
+        <div class="collapsible-body">
+          <ul>
+            <li><a href="/pages/admin-dashboard" class="waves-effect">Dashboard<i class="material-icons">web</i></a></li>
+            <li><a href="/pages/admin-fixed-chart" class="waves-effect">Fixed Chart<i class="material-icons">list</i></a></li>
+            <li><a href="/pages/admin-grid" class="waves-effect">Grid<i class="material-icons">dashboard</i></a></li>
+            <li><a href="/pages/admin-chat" class="waves-effect">Chat<i class="material-icons">chat</i></a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<style>
+  header {
+    background: #aaa;
+  }
+
+  header hr {
+    border-top: 1px solid #777;
+    border-bottom: 0;
+  }
+
+  header a {
+    color: #000;
+  }
+
+  header .logo {
+    color: #333;
+  }
+  header .logo :hover {
+    color: #000;
+  }
+
+  header .title {
+    color: #333;
+  }
+  header .title:hover {
+    color: #000;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+    
+    var elems2 = document.querySelectorAll('.collapsible');
+    var instances2 = M.Collapsible.init(elems2, {});
+  });
+</script>
